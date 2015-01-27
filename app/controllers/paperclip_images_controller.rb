@@ -37,7 +37,7 @@ class PaperclipImagesController < ApplicationController
   end
 
   def download
-    send_file @paperclip_image.picture.path(:thumb),
+    send_file @paperclip_image.picture.path(:original),
               :filename => @paperclip_image.picture_file_name,
               :type => @paperclip_image.picture_content_type,
               :disposition => 'attachment'
