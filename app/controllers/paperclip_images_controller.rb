@@ -1,5 +1,5 @@
 class PaperclipImagesController < ApplicationController
-  before_action :set_paperclip_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_paperclip_image, only: [:show, :edit, :update, :destroy, :download]
 
   respond_to :html
 
@@ -36,10 +36,18 @@ class PaperclipImagesController < ApplicationController
     respond_with(@paperclip_image)
   end
 
+  def download
+    send_file @paperclip_image.picture.path(:thumb),
+              :filename => @paperclip_image.picture_file_name,
+              :type => @paperclip_image.picture_content_type,
+              :disposition => 'attachment'
+  end
+
   private
     def set_paperclip_image
       @paperclip_image = PaperclipImage.find(params[:id])
     end
+
 
     def paperclip_image_params
       params.require(:paperclip_image).permit(:picture)

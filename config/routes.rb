@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  
   resources :paperclip_images
-
+  get 'download/:id' , to: "paperclip_images#download" , :as => :download
+  
   get 'profiles/show'
 
   devise_for :users

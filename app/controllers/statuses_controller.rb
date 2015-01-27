@@ -11,6 +11,11 @@ class StatusesController < ApplicationController
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+    respond_to do |format|  
+      format.html { render :show }
+      format.json { render json: { name: @status.user.full_name, content: @status.content }, status: 200 }
+    end
+
   end
 
   # GET /statuses/new
