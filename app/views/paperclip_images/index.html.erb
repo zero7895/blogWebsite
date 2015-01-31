@@ -11,7 +11,7 @@
     <% @paperclip_images.each do |paperclip_image| %>
       <tr>
         <td><%= link_to image_tag(paperclip_image.picture.url(:thumb), class: "img-thumbnail"), paperclip_image %></td>
-        <td><%= link_to 'Download', :controller => 'paperclip_images', :action => 'download', :id =>  paperclip_image.id %>| </td> 
+        <td><%= link_to 'Download', download_path(paperclip_image) %>| </td> 
         <td><%= link_to 'Edit', edit_paperclip_image_path(paperclip_image) %>| </td>
         <td><%= link_to 'Destroy', paperclip_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
