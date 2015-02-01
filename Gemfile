@@ -30,6 +30,8 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'paperclip', '~> 4.2'
+
+gem 'nokogiri'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

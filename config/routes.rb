@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'parse_utilities/getLottory'
+
   resources :paperclip_images
   get 'paperclip_images/:id/download' , to: "paperclip_images#download" , :as => :download
   
