@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Money1:</strong>
+  <%= @game_datum.money1 %>
+</p>
+
+<p>
+  <strong>Money2:</strong>
+  <%= @game_datum.money2 %>
+</p>
+
+<p>
+  <strong>Money3:</strong>
+  <%= @game_datum.money3 %>
+</p>
+
+<p>
+  <strong>Money4:</strong>
+  <%= @game_datum.money4 %>
+</p>
+
+<p>
+  <strong>game_info_id:</strong>
+  <%= @game_datum.game_info_id %>
+</p>
+
+<%= link_to 'Edit', edit_game_datum_path(@game_datum) %> |
+<%= link_to 'Back', game_data_path %>

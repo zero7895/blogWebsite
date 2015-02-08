@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :game_data
+
+  resources :game_infos
+
   get 'parse_utilities/getLottory'
 
   resources :paperclip_images

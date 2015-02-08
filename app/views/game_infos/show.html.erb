@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @game_info.info %>
+</p>
+
+<p>
+  <strong>Name1:</strong>
+  <%= @game_info.name1 %>
+</p>
+
+<p>
+  <strong>Name2:</strong>
+  <%= @game_info.name2 %>
+</p>
+
+<p>
+  <strong>Name3:</strong>
+  <%= @game_info.name3 %>
+</p>
+
+<p>
+  <strong>Name4:</strong>
+  <%= @game_info.name4 %>
+</p>
+
+<% @game_info.game_datum.each do |datum| %>
+
+  <%= datum.money1 %>
+  <%= datum.money2 %>
+  <%= datum.money3 %>
+  <%= datum.money4 %>
+  </br>
+<% end %>
+
+
+<%= link_to 'Add data', new_game_datum_path %> |
+
+<%= link_to 'Edit', edit_game_info_path(@game_info) %> |
+<%= link_to 'Back', game_infos_path %>
