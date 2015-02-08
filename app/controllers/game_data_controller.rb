@@ -22,8 +22,13 @@ class GameDataController < ApplicationController
 
   def create
     @game_datum = GameDatum.new(game_datum_params)
-    @game_datum.save
-    respond_with(@game_datum)
+    if @game_datum.money1+@game_datum.money2+@game_datum.money3+@game_datum.money4 == 0
+      @game_datum.save
+      redirect_to game_info_path(@game_datum.game_info_id)
+    else
+      flash[:error] = "Not balance"
+      render :new
+    end
   end
 
   def update

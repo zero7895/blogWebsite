@@ -1,41 +1,50 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Info:</strong>
+  <strong>Game Info:</strong>
   <%= @game_info.info %>
 </p>
 
-<p>
-  <strong>Name1:</strong>
-  <%= @game_info.name1 %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <td></td>
+      <td><%= @game_info.name1 %></td>
+      <td><%= @game_info.name2 %></td>
+      <td><%= @game_info.name3 %></td>
+      <td><%= @game_info.name4 %></td>
+    </tr> 
+  </thead>
+  <tbody>
+    <% counter = 0 %>
+    <% sumArray = [0,0,0,0] %>
+    
+    <% @game_info.game_datum.each do |datum| %>
+        <% counter += 1 %>
+        <% sumArray[0] += datum.money1 %>
+        <% sumArray[1] += datum.money2 %>
+        <% sumArray[2] += datum.money3 %>
+        <% sumArray[3] += datum.money4 %>
+        
+        <tr>
+          <td>Round<%= counter %></td>
+          <td><%= datum.money1 %></td>
+          <td><%= datum.money2 %></td>
+          <td><%= datum.money3 %></td>
+          <td><%= datum.money4 %></td>
+        </tr> 
+    <% end %>
 
-<p>
-  <strong>Name2:</strong>
-  <%= @game_info.name2 %>
-</p>
+    <tr>
+      <td>Balance </td>
+      <td><%= sumArray[0] %></td>
+      <td><%= sumArray[1] %></td>
+      <td><%= sumArray[2] %></td>
+      <td><%= sumArray[3] %></td>
+    </tr> 
+  </tbody>
+</table>
 
-<p>
-  <strong>Name3:</strong>
-  <%= @game_info.name3 %>
-</p>
-
-<p>
-  <strong>Name4:</strong>
-  <%= @game_info.name4 %>
-</p>
-
-<% @game_info.game_datum.each do |datum| %>
-
-  <%= datum.money1 %>
-  <%= datum.money2 %>
-  <%= datum.money3 %>
-  <%= datum.money4 %>
-  </br>
-<% end %>
-
-
-<%= link_to 'Add data', new_game_datum_path %> |
-
-<%= link_to 'Edit', edit_game_info_path(@game_info) %> |
-<%= link_to 'Back', game_infos_path %>
+<%= link_to 'Add data', new_game_datum_path , class: "btn btn-success" %> 
+<%= link_to 'Edit Game Info', edit_game_info_path(@game_info) , class: "btn btn-default"  %>
+<%= link_to 'Back', game_infos_path , class: "btn btn-default" %>
