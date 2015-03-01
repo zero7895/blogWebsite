@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208084737) do
+ActiveRecord::Schema.define(version: 20150301131725) do
 
   create_table "game_data", force: true do |t|
     t.integer  "money1"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150208084737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "game_info_id"
+    t.integer  "base_pay"
+    t.integer  "acc_pay"
   end
 
   add_index "game_data", ["game_info_id"], name: "index_game_data_on_game_info_id"
@@ -33,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150208084737) do
     t.string   "name4"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "base_pay"
+    t.integer  "acc_pay"
   end
 
   create_table "paperclip_images", force: true do |t|

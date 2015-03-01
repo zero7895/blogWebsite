@@ -42,6 +42,6 @@ class GameInfosController < ApplicationController
     end
 
     def game_info_params
-      params.require(:game_info).permit(:info, :name1, :name2, :name3, :name4)
+      params.require(:game_info).permit(:info, :name1, :name2, :name3, :name4, :base_pay, :acc_pay)
     end
 end

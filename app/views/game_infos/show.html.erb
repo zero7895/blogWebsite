@@ -18,33 +18,36 @@
   <tbody>
     <% counter = 0 %>
     <% sumArray = [0,0,0,0] %>
+    <% sumMoneyArray = [0,0,0,0] %>
     
     <% @game_info.game_datum.each do |datum| %>
         <% counter += 1 %>
-        <% sumArray[0] += datum.money1 %>
-        <% sumArray[1] += datum.money2 %>
-        <% sumArray[2] += datum.money3 %>
-        <% sumArray[3] += datum.money4 %>
-        
+        <% curArray = [datum.money1,datum.money2,datum.money3,datum.money4] %>
+        <% curMoneyArray = @game_info.getComputeGameMoney(curArray) %>
         <tr>
           <td>Round<%= counter %></td>
-          <td><%= datum.money1 %></td>
-          <td><%= datum.money2 %></td>
-          <td><%= datum.money3 %></td>
-          <td><%= datum.money4 %></td>
+          <% (0..3).each do |i| %>
+            <td><%= curArray[i].to_s + "台:" + curMoneyArray[i].to_s %></td>
+          <% end %>
         </tr> 
+
+        <% (0..3).each do |i| %>
+          <% sumMoneyArray[i] += curMoneyArray[i] %>
+        <% end %>
     <% end %>
 
     <tr>
       <td>Balance </td>
-      <td><%= sumArray[0] %></td>
-      <td><%= sumArray[1] %></td>
-      <td><%= sumArray[2] %></td>
-      <td><%= sumArray[3] %></td>
+      <td><%= sumMoneyArray[0] %></td>
+      <td><%= sumMoneyArray[1] %></td>
+      <td><%= sumMoneyArray[2] %></td>
+      <td><%= sumMoneyArray[3] %></td>
     </tr> 
   </tbody>
 </table>
 
-<%= link_to 'Add data', new_game_datum_path , class: "btn btn-success" %> 
+  <div id="form">
+    <%= render :partial => "game_data/form", :locals => {:game_datum => GameDatum.new, :game_info_id => @game_info.id } %>
+  </div>
 <%= link_to 'Edit Game Info', edit_game_info_path(@game_info) , class: "btn btn-default"  %>
 <%= link_to 'Back', game_infos_path , class: "btn btn-default" %>
