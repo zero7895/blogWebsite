@@ -32,6 +32,11 @@ gem 'simple_form'
 gem 'paperclip', '~> 4.2'
 
 gem 'nokogiri'
+
+gem 'omniauth-facebook'
+gem 'therubyracer'
+gem 'omniauth'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

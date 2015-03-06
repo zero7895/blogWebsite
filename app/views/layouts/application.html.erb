@@ -20,7 +20,12 @@
 
 			<ul class="nav navbar-nav pull-right">
 			<% if user_signed_in? %>
-				<li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+				<% unless current_user[:full_name].nil? %>
+					<li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+				<% end %>
+				<% unless current_user[:email].nil? %>
+					<li><%= link_to current_user.email, edit_user_registration_path %></li>	
+				<% end %>
 				<li><%= link_to "Log Out", logout_path  %></li>
 			<% else %>
 				<li><%= link_to "Register", register_path %></li>
