@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Game Info:</strong>
-  <%= @game_info.info %>
+<p class="gameInfo" data-acc="<%= @game_info.acc_pay %>"  data-base="<%= @game_info.base_pay %>"  >
+  <strong>Game Info:<%= @game_info.info %> </strong>
+  <button class="gameInfoBtn" > 詳細資料 </button>
+  <p class="payInfo"></p>
 </p>
 
 <table class="table">

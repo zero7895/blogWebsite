@@ -1,10 +1,10 @@
 <%= simple_form_for(game_datum) do |f| %>
   <%= f.error_notification %>
 
-  <div class="row">
+  <div class="row gameInput">
     <%= f.hidden_field :game_info_id, :value => game_info_id %>
     <div class="col-xs-2">
-      <%= f.input :money1 %>
+      <%= f.input :money1 ,  :input_html => { :class => 'input_money1' }%>
     </div>
     <div class="col-xs-2">
         <%= f.input :money2 %>
